@@ -37,14 +37,15 @@ function getRecipesFromStorage() {
 function addRecipesToDocument(recipes) {
   // A10. TODO - Get a reference to the <main> element
   const main = document.querySelector("main");
+
   // A11. TODO - Loop through each of the recipes in the passed in array,
   //            create a <recipe-card> element for each one, and populate
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
-  for(const recipe of recipes){
-    let recipeCard = document.createElement("recipe-card");
-    recipeCard.data = recipe;
-    main.appendChild(recipeCard);
+  for (const recipe of recipes) {
+    const card = document.createElement("recipe-card");
+    card.data = recipe;
+    main.append(card);
   }
 }
 
@@ -53,7 +54,7 @@ function addRecipesToDocument(recipes) {
  * saves that string to 'recipes' in localStorage
  * @param {Array<Object>} recipes An array of recipes
  */
- function saveRecipesToStorage(recipes) {
+function saveRecipesToStorage(recipes) {
   // EXPLORE - START (All explore numbers start with B)
   // B1. TODO - Complete the functionality as described in this function
   //            header. It is possible in only a single line, but should
@@ -68,12 +69,13 @@ function addRecipesToDocument(recipes) {
 function initFormHandler() {
 
   // B2. TODO - Get a reference to the <form> element
-  let form = document.querySelector('form');
+  const form = document.getElementById("new-recipe");
+  const main = document.querySelector("main");
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
   form.querySelector("button[type=submit]").addEventListener("click", (evt) => {
-    evt.preventDefault();
+    evt.preventDefault(); // Prevent page reload
 
     // Steps B4-B9 will occur inside the event listener from step B3
     // B4. TODO - Create a new FormData object from the <form> element reference above
@@ -88,7 +90,7 @@ function initFormHandler() {
     }
 
     // B6. TODO - Create a new <recipe-card> element
-    let card = document.createElement("recipe-card");
+    const card = document.createElement("recipe-card");
 
     // B7. TODO - Add the recipeObject data to <recipe-card> using element.data
     card.data = recipeObject;
