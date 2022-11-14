@@ -64,7 +64,7 @@ function saveRecipesToStorage(recipes) {
   // B1. TODO - Complete the functionality as described in this function
   //            header. It is possible in only a single line, but should
   //            be no more than a few lines.
-  localStorage.recipes = JSON.stringify(recipes);
+  localStorage.setItem('recipes',JSON.stringify(recipes));
 }
 
 /**
@@ -74,7 +74,7 @@ function saveRecipesToStorage(recipes) {
 function initFormHandler() {
 
   // B2. TODO - Get a reference to the <form> element
-  const form = document.getElementById("new-recipe");
+  const form = document.querySelector("form");
   const main = document.querySelector("main");
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
